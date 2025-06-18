@@ -4,6 +4,7 @@ using JuliePro.Models.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JuliePro.Migrations
 {
     [DbContext(typeof(JulieProDbContext))]
-    partial class JulieProDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250618192445_AjoutClassesCustomerEtObjective")]
+    partial class AjoutClassesCustomerEtObjective
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,49 +60,7 @@ namespace JuliePro.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BirthDate = new DateTime(1998, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "ThoBerger@gmail.com",
-                            FirstName = "Thomas",
-                            LastName = "Bergeron",
-                            StartWeight = 205.0,
-                            TrainerId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BirthDate = new DateTime(1978, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "AlexCool@gmail.com",
-                            FirstName = "Alexis",
-                            LastName = "Plante",
-                            StartWeight = 228.0,
-                            TrainerId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BirthDate = new DateTime(2000, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "BouLe@gmail.com",
-                            FirstName = "Léa",
-                            LastName = "Boucher",
-                            StartWeight = 192.0,
-                            TrainerId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BirthDate = new DateTime(1980, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "LECourtier@gmail.com",
-                            FirstName = "Mathis",
-                            LastName = "Courtier",
-                            StartWeight = 199.0,
-                            TrainerId = 2
-                        });
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("JuliePro.Models.Objective", b =>
@@ -131,81 +92,7 @@ namespace JuliePro.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Objectives");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AchievedDate = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 1,
-                            DistanceKm = 42.200000000000003,
-                            Name = "Marathon"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AchievedDate = new DateTime(2018, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 1,
-                            LostWeightKg = 10.0,
-                            Name = "AllerAuGym"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CustomerId = 1,
-                            Name = "ExerciceQuot"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AchievedDate = new DateTime(2019, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 1,
-                            DistanceKm = 21.100000000000001,
-                            Name = "DemiMarathon"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CustomerId = 2,
-                            Name = "GlowUp"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CustomerId = 2,
-                            Name = "PrepCourse"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AchievedDate = new DateTime(2021, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 3,
-                            DistanceKm = 45.0,
-                            Name = "Triathlon"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AchievedDate = new DateTime(2023, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 3,
-                            LostWeightKg = 2.0,
-                            Name = "BodyBuilding"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CustomerId = 4,
-                            Name = "SummerBody"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            AchievedDate = new DateTime(2012, 9, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 4,
-                            DistanceKm = 2.0,
-                            Name = "NatationRapide"
-                        });
+                    b.ToTable("Objective");
                 });
 
             modelBuilder.Entity("JuliePro.Models.Speciality", b =>
