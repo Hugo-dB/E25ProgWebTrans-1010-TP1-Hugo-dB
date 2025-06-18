@@ -2,6 +2,7 @@
 using JuliePro.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JuliePro.Controllers
 {
@@ -17,7 +18,8 @@ namespace JuliePro.Controllers
         // GET: SpecialityController
         public ActionResult Index()
         {
-            return View(_baseDonnees.Specialities.ToList());
+            List<Speciality> speciality = _baseDonnees.Specialities.Include(s => s.Trainers).ToList();
+            return View(speciality);
         }
 
         // GET: SpecialityController/Create
