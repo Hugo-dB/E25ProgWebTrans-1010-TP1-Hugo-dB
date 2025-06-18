@@ -18,7 +18,7 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
-    
+    @Html.ValidationMessage("t", new { @class = "text-warning" })
     <form asp-action="DeletePost">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

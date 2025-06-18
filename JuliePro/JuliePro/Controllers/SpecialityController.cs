@@ -86,9 +86,16 @@ namespace JuliePro.Controllers
         public ActionResult DeletePost(int id)
         {
             Speciality speciality = _baseDonnees.Specialities.Find(id);
+            List<Trainer> trainers = _baseDonnees.Trainers.Where(t => t.SpecialityId == id).ToList();
             if (speciality == null)
             {
                 return View("NotFound");             
+            }
+
+            if (trainers.Count > 0)
+            {
+                ModelState.AddModelError("t", "There's at least one Trainer with that speciality.");
+                return View("Delete", speciality);
             }
 
             _baseDonnees.Specialities.Remove(speciality);
