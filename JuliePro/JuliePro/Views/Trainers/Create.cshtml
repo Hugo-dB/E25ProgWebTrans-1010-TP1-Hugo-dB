@@ -37,14 +37,10 @@
                 <select asp-for="Speciality.Name" class ="form-control" asp-items="ViewBag.SpecialityId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <partial name="_ActionButtons" model="@("Delete")" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

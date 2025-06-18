@@ -1,8 +1,23 @@
 ﻿@model string
 
-<div class="col">
-    <button type="submit" class="btn btn-success w-100"><i class="fa-solid fa-plus"></i>@Model</button>   
-</div>
-<div class="col">
-    <a asp-action="Index" class="btn btn-secondary w-100"><i class="fa-solid fa-circle-arrow-left"></i>Back to list</a>
+<br />
+<div class="row">
+    <div class="col-auto">
+        @if(@Model == "Delete")
+        {
+        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+        }
+        @if(@Model == "Create")
+        {
+        <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus"></i> Create</button>
+        }
+        @if(@Model == "Save")
+        {
+        <button type="submit" class="btn btn-info"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        }
+     
+    </div>
+    <div class="col-auto">
+        <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-circle-arrow-left"></i> Back to list</a>
+    </div>
 </div>
