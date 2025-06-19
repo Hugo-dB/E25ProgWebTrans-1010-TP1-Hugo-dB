@@ -34,7 +34,7 @@
                     @(item.FirstName + " " + item.LastName) 
                 </td>
                 <td>
-                    @(((DateTime.Now - item.BirthDate).TotalDays / 365).ToString("F0"))
+                    @(DateTime.Now.Year - item.BirthDate.Year)
                 </td>
             </tr>
         }
