@@ -1,5 +1,8 @@
-﻿using JuliePro.Models.Data;
+﻿using JuliePro.Models;
+using JuliePro.Models.Data;
+using JuliePro.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JuliePro.Controllers
 {
@@ -13,7 +16,9 @@ namespace JuliePro.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            List<Customer> customers = _context.Customers.Include(c => c.Objectives).ToList();
+            StatsVM statsVM = new(customers);
+            return View(statsVM);
         }
     }
 }

@@ -1,1 +1,50 @@
-﻿
+﻿@model JuliePro.ViewModels.StatsVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-6">
+
+<h1>Index</h1>
+
+<h4>Générale</h4>
+
+<p>Quelle est la distance totale des objectifs de tous les clients? <strong>@(Model.TotalDistance) km</strong></p>
+
+<p>Quel est le nombre maximum d'objectifs pour un même client? <strong>@(Model.MaxObjective)</strong></p>
+
+<h4>Les 2 clients les plus vieux et leur âge</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <strong>Nom du client</strong>
+            </th>
+            <th>
+                <strong>Âge</strong>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OldestCustomers)
+        {
+            <tr>
+                <td>
+                    @(item.FirstName + " " + item.LastName) 
+                </td>
+                <td>
+                    @(((DateTime.Now - item.BirthDate).TotalDays / 365).ToString("F0"))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Statistiques à propos de Chrystal Lapierre:</h4>
+
+<p>Quel est le nombre maximum d'objectifs <strong>COMPLÉTÉS</strong> par un client de Chrystal Lapierre? <strong>@(Model.MaxObjectiveChrystal)</strong></p>
+
+<p>Quel est la moyenne de poids perdu par les clients de l'entraîneur Chrystal Lapierre? <strong>@(Model.AverageWeightLossChrystal)</strong></p>
+
+</div>
