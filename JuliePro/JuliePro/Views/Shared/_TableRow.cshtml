@@ -1,0 +1,26 @@
+﻿@model CustomerObjectivesVM
+
+<th>
+    @Model.CustomerName
+</th>
+<th>
+    @Model.NbCompletedObjectives
+</th>
+<th>
+    @Model.NbIncompletedObjectives
+</th>
+<th>
+    @if (Model.NbActiveObjectives == 0)
+    {
+        <p style="color:orange">It's time to set a new objective!</p>
+    }
+    else if (Model.NbActiveObjectives == 1)
+    {
+        <p style="color:mediumspringgreen">Keep focusing on that objective!</p>
+    }
+    else
+    {
+        <p style="color:orangered">Shouldn't have more than 1 current objective!</p>
+    }
+
+</th>

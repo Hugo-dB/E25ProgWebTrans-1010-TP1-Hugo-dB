@@ -1,0 +1,33 @@
+﻿@model List<JuliePro.ViewModels.TrainerObjectivesVM>
+
+@{
+    ViewData["Title"] = "Objectives";
+}
+
+    <div class="container p-3">
+<div class="row pt-4">
+    <div class="col-10">
+        <h2 class="text-primary">Objectives</h2>
+    </div>
+</div>
+
+<div class="accordion" id="zombieAccordion">
+    @foreach (var trainerObjective in Model)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="@("#Id" + trainerObjective.Trainer.Id)" aria-expanded="false" aria-controls="@(trainerObjective.Trainer.FirstName + " " + trainerObjective.Trainer.LastName)">
+                    @trainerObjective.TrainerInfos
+                </button>
+            </h2>
+            <div id="@("Id" + trainerObjective.Trainer.Id)" class="accordion-collapse collapse" data-bs-parent="#objectivesAccordion">
+                <div class="accordion-body">
+                    <div class="row">
+                        <partial name="_Table" model="@trainerObjective"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+</div>

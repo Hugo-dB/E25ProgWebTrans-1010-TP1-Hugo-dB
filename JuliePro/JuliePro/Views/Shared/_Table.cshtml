@@ -1,0 +1,36 @@
+﻿@model JuliePro.ViewModels.TrainerObjectivesVM
+
+@if (Model.CustomerObjectivesVMs.Count() == 0)
+{
+    <span class="text-danger">Aucun customer pour ce trainer</span>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <strong>Customer's Name</strong>
+                </th>
+                <th>
+                    <strong>Nb Completed Objectives</strong>
+                </th>
+                <th>
+                    <strong>Nb Incompleted Objectives</strong>
+                </th>
+                <th>
+                    <strong>Status</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (CustomerObjectivesVM customerObjectives in Model.CustomerObjectivesVMs)
+            {
+                <tr>
+                    <partial name="_TableRow" model="customerObjectives"/>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
